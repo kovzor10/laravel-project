@@ -6,6 +6,14 @@
 <div class="container">
     <h1>Edit User: {{ $user->name }}</h1>
 
+    @if($errors->any())
+        <div class="col-12">
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">{{ $error }}</div>
+                @endforeach
+        </div>
+    @endif
+
     <form action="{{ route('user.update', $user) }}" method="POST">
         @csrf
         @method('POST')
